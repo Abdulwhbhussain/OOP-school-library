@@ -18,7 +18,7 @@ class Person
 
   # Private Methods
   private
-  
+
   def of_age?
     @age >= 18
   end
