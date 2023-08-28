@@ -1,4 +1,4 @@
-require"./person"
+require'./person.rb'
 
 class Teacher < Person
   def initialize(name, age, specialization)
