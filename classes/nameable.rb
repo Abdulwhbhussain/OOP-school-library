@@ -1,4 +1,3 @@
-
 class Nameable
   attr_accessor :name
 
