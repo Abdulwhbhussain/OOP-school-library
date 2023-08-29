@@ -1,4 +1,4 @@
-require './nameable'
+require_relative './nameable'
 # Person Class
 
 class Person < Nameable

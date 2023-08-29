@@ -1,3 +1,5 @@
+require_relative 'base_decorator'
+
 # Prepare TrimmerDecorator
 
 class TrimmerDecorator < BaseDecorator
