@@ -1,4 +1,5 @@
 require './nameable'
+require './person'
 
 # Base Decorator Class
 
@@ -28,3 +29,10 @@ class TrimmerDecorator < BaseDecorator
     @nameable.correct_name
   end
 end
+
+person = Person.new(22, 'maximilianus')
+person.correct_name
+capitalize_person = CapitalizeDecorator.new(person)
+capitalize_person.correct_name
+trimmer_person = TrimmerDecorator.new(person)
+trimmer_person.correct_name
