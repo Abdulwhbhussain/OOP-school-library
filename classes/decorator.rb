@@ -23,6 +23,8 @@ end
 
 class TrimmerDecorator < BaseDecorator
   def correct_name
-    @nameable.correct_name.strip
+    return @nameable.correct_name.slice(0, 10) if @nameable.correct_name.size > 10
+
+    @nameable.correct_name
   end
 end
