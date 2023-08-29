@@ -1,7 +1,5 @@
 class Nameable
-  attr_accessor :name
-
-  def initialize(name)
-    @name = name
+  def correct_name
+    raise NotImplementedError, "You must implement the correct_name method"
   end
 end
