@@ -31,8 +31,8 @@ class TrimmerDecorator < BaseDecorator
 end
 
 person = Person.new(22, 'maximilianus')
-person.correct_name
+puts person.correct_name
 capitalize_person = CapitalizeDecorator.new(person)
-capitalize_person.correct_name
+puts capitalize_person.correct_name
 trimmer_person = TrimmerDecorator.new(person)
-trimmer_person.correct_name
+puts trimmer_person.correct_name
