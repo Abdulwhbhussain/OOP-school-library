@@ -1,4 +1,4 @@
 # Class classroom
 
-class classroom
+class Classroom
 end
