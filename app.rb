@@ -1,16 +1,13 @@
 # App Console Entry Point
 require_relative 'classes/book'
 require_relative 'classes/person'
-require_relative 'classes/classroom'
-require_relative 'classes/rental'
-require_relative 'classes/base_decorator'
-require_relative 'classes/capitalize_decorator'
-require_relative 'classes/nameable'
-require_relative 'classes/trimmer_decorator'
 require_relative 'classes/teacher'
 require_relative 'classes/student'
+require_relative 'classes/rental'
 
 class App
+  attr_accessor :books, :people, :rentals
+
   def initialize
     @books = []
     @people = []
