@@ -11,6 +11,27 @@ def show_menu
   puts '7 - Exit'
 end
 
+def choices(number, app)
+  case number
+  when 1
+    puts 'List of books:'
+  when 2
+    puts 'List of people:'
+  when 3
+    puts 'Create a person:'
+  when 4
+    puts 'Create a book:'
+  when 5
+    puts 'Create a rental:'
+  when 6
+    puts 'List of rentals:'
+  when 7
+    puts 'Goodbye!'
+  else
+    puts 'Try again, please'
+  end
+end
+
 # Create a new instance of the App class
 
 def main
@@ -21,24 +42,7 @@ def main
   while number != 7
     show_menu
     number = gets.chomp.to_i
-    case number
-    when 1
-      puts 'List of books:'
-    when 2
-      puts 'List of people:'
-    when 3
-      puts 'Create a person:'
-    when 4
-      puts 'Create a book:'
-    when 5
-      puts 'Create a rental:'
-    when 6
-      puts 'List of rentals:'
-    when 7
-      puts 'Goodbye!'
-    else
-      puts 'Try again, please'
-    end
+    choices(number, app)
   end
 end
 
