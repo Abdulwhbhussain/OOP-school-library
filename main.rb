@@ -14,20 +14,20 @@ end
 def choices(number, app)
   case number
   when 1
-    puts 'List of books:'
-    app
+    # puts 'List of books:'
+    app.books
   when 2
-    puts 'List of people:'
-    app
+    # puts 'List of people:'
+    app.people
   when 3
-    puts 'Create a person:'
-    app
+    # puts 'Create a person:'
+    app.add_person
   when 4
-    puts 'Create a book:'
-    app
+    # puts 'Create a book:'
+    app.add_book
   when 5
-    puts 'Create a rental:'
-    app
+    # puts 'Create a rental:'
+    app.add_rental
   when 6
     puts 'List of rentals:'
     app
