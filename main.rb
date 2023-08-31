@@ -38,7 +38,7 @@ def main
       puts 'Goodbye!'
     else
       puts 'Try again, please'
-    end   
+    end
   end
 end
 
