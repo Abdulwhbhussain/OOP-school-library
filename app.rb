@@ -11,6 +11,11 @@ require_relative 'classes/teacher'
 require_relative 'classes/student'
 
 class App
+  def initialize
+    @books = []
+    @people = []
+    @rentals = []
+  end
 end
 
 # case number
