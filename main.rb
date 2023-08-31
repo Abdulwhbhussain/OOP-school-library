@@ -28,13 +28,17 @@ def choices(number, app)
   when 5
     # puts 'Create a rental:'
     app.add_rental
-  when 6
-    puts 'List of rentals:'
-    app
+  # when 6
+  #   puts 'List of rentals:'
+  #   app
   when 7
     puts 'Goodbye!'
   else
     puts 'Try again, please'
+  end
+  if number == 6
+    puts 'List of rentals:'
+    app.rentals
   end
 end
 
