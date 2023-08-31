@@ -55,11 +55,7 @@ class App
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp.upcase
-    if permission == 'Y'
-      permission = true
-    else
-      permission = false
-    end
+    permission = (permission == 'Y')
     puts 'testing before student creation'
     student = Student.new(name, age, permission)
     puts 'testing after student creation'
@@ -98,21 +94,18 @@ class App
 
   def add_rental()
     puts 'Creating a rental:'
-    puts ' '
     puts 'Select a book from the following list by number'
     @books.each_with_index do |book, index|
       puts "#{index}) Title: #{book.title}, Author: #{book.author}"
     end
     book_index = gets.chomp.to_i
     book = @books[book_index]
-    puts ' '
     puts 'Select a person from the following list by number (not id)'
     @people.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] - Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_index = gets.chomp.to_i
     person = @people[person_index]
-    puts ' '
     print 'Date: '
     date = gets.chomp
     rental = Rental.new(date, book, person)
