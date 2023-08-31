@@ -15,16 +15,22 @@ def choices(number, app)
   case number
   when 1
     puts 'List of books:'
+    app
   when 2
     puts 'List of people:'
+    app
   when 3
     puts 'Create a person:'
+    app
   when 4
     puts 'Create a book:'
+    app
   when 5
     puts 'Create a rental:'
+    app
   when 6
     puts 'List of rentals:'
+    app
   when 7
     puts 'Goodbye!'
   else
