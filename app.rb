@@ -46,7 +46,7 @@ class App
     puts ' '
   end
 
-  def add_student
+  def add_student()
     puts 'Creating a student:'
     puts ' '
     print 'Age: '
@@ -68,7 +68,7 @@ class App
     puts ' '
   end
 
-  def add_teacher
+  def add_teacher()
     puts 'Creating a Teacher:'
     puts ' '
     print 'Age: '
@@ -88,9 +88,9 @@ class App
     person_type = gets.chomp.to_i
     case person_type
     when 1
-      add_student()
+      add_student
     when 2
-      add_teacher()
+      add_teacher
     else
       puts 'Please enter a valid number'
     end
