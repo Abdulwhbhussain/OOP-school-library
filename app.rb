@@ -86,7 +86,6 @@ class App
   def add_person()
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_type = gets.chomp.to_i
-    
     case person_type
     when 1
       add_student()
@@ -130,7 +129,6 @@ class App
     end
     puts ' '
   end
-
 end
 
 # case number
