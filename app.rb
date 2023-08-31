@@ -11,7 +11,7 @@ require_relative 'classes/teacher'
 require_relative 'classes/student'
 
 class App
-  def run()
+  def run
     puts 'Welcome to School Library App!'
     puts ' '
     number = 0
