@@ -46,7 +46,7 @@ class App
     puts ' '
   end
 
-  def add_student()
+  def add_student
     puts 'Creating a student:'
     puts ' '
     print 'Age: '
@@ -68,7 +68,7 @@ class App
     puts ' '
   end
 
-  def add_teacher()
+  def add_teacher
     puts 'Creating a Teacher:'
     puts ' '
     print 'Age: '
