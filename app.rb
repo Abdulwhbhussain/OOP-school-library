@@ -4,7 +4,6 @@ require_relative 'classes/person'
 require_relative 'classes/teacher'
 require_relative 'classes/student'
 require_relative 'classes/rental'
-require_relative 'classes/classroom'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -56,9 +55,7 @@ class App
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp.upcase
     permission = (permission == 'Y')
-    puts 'testing before student creation'
     student = Student.new(name, age, permission)
-    puts 'testing after student creation'
     @people.push(student)
     puts 'Student created successfully'
     puts ' '
