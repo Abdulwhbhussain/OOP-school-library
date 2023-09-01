@@ -56,6 +56,7 @@ class App
     permission = gets.chomp.upcase
     permission = (permission == 'Y')
     student = Student.new(name, age, permission)
+    student.parent_permission = permission
     @people.push(student)
     puts 'Student created successfully'
     puts ' '
