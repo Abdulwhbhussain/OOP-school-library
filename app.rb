@@ -55,7 +55,7 @@ class App
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp.upcase
     permission = (permission == 'Y')
-    student = Student.new(name, age, permission)
+    student = Student.new(name, age)
     student.parent_permission = permission
     @people.push(student)
     puts 'Student created successfully'
