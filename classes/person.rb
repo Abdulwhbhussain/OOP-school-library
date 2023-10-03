@@ -16,9 +16,9 @@ class Person < Nameable
   end
 
   # Public Methods
-  def add_rental(date, book)
-    rentals.push(Rental.new(date, book, self))
-  end
+  # def add_rental(date, book)
+  #   rentals.push(Rental.new(date, book, self))
+  # end
 
   def can_use_services?
     of_age? || @parent_permission
