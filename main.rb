@@ -27,10 +27,8 @@ def choices(number, app)
     print 'ID of person: '
     id = gets.chomp.to_i
     app.rentals_of_person(id)
-  when 7
-    puts 'Thank you for using the School Library App!'
   else
-    puts 'Try again, please'
+    puts 'Thank you for using the School Library App!'
   end
 end
 
@@ -44,7 +42,13 @@ def main
   while number != 7
     show_menu
     number = gets.chomp.to_i
-    choices(number, app)
+    if number < 1 || number > 7
+      puts 'Please enter a valid number'
+      puts ' '
+      next
+    else
+      choices(number, app)
+    end
   end
 end
 
