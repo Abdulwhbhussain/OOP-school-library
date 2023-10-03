@@ -49,37 +49,3 @@ def main
 end
 
 main
-
-# def rentals
-#   print 'ID of person: '
-#   id = gets.chomp.to_i
-#   app.rentals_of_person(id)
-# end
-
-# def main
-#   app = App.new
-#   puts 'Welcome to School Library App!'
-#   puts ' '
-#   number = 0
-#   while number != 7
-#     show_menu
-#     number = gets.chomp.to_i
-#     choices = {
-#       1 => app.books,
-#       2 => app.people,
-#       3 => app.add_person,
-#       4 => app.add_book,
-#       5 => app.add_rental,
-#       6 => rentals,
-#       7 => puts('Thank you for using the School Library App!')
-#     }
-#     if choices[number].nil?
-#       puts 'Try again, please'
-#       next
-#     else
-#       choices[number]
-#     end
-#   end
-# end
-
-# main
