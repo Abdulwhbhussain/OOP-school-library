@@ -19,6 +19,3 @@ class Student < Person
     '¯\(ツ)/¯'
   end
 end
-
-student = Student.new('John', 18, true)
-puts "#{student}"

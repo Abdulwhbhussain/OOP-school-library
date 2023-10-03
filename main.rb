@@ -14,9 +14,9 @@ end
 def choices(number, app)
   case number
   when 1
-    app.books
+    app.books_list
   when 2
-    app.people
+    app.people_list
   when 3
     app.add_person
   when 4

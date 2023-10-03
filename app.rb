@@ -14,7 +14,7 @@ class App
     @rentals = []
   end
 
-  def books()
+  def books_list()
     puts 'Listing all books:'
     puts ' '
     @books.each do |book|
@@ -23,7 +23,7 @@ class App
     puts ' '
   end
 
-  def people()
+  def people_list()
     puts 'Listing all people:'
     puts ' '
     @people.each do |person|
