@@ -11,11 +11,30 @@ def show_menu
   puts '7 - Exit'
 end
 
-def rentals
-  print 'ID of person: '
-  id = gets.chomp.to_i
-  app.rentals_of_person(id)
+def choices(number, app)
+  case number
+  when 1
+    app.books_list
+  when 2
+    app.people_list
+  when 3
+    app.add_person
+  when 4
+    app.add_book
+  when 5
+    app.add_rental
+  when 6
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    app.rentals_of_person(id)
+  when 7
+    puts 'Thank you for using the School Library App!'
+  else
+    puts 'Try again, please'
+  end
 end
+
+# Create a new instance of the App class
 
 def main
   app = App.new
@@ -25,50 +44,17 @@ def main
   while number != 7
     show_menu
     number = gets.chomp.to_i
-    choices = {
-      1 => app.books,
-      2 => app.people,
-      3 => app.add_person,
-      4 => app.add_book,
-      5 => app.add_rental,
-      6 => rentals,
-      7 => puts('Thank you for using the School Library App!')
-    }
-    if choices[number].nil?
-      puts 'Try again, please'
-      next
-    else
-      choices[number]
-    end
+    choices(number, app)
   end
 end
 
 main
 
-# def choices(number, app)
-#   case number
-#   when 1
-#     app.books
-#   when 2
-#     app.people
-#   when 3
-#     app.add_person
-#   when 4
-#     app.add_book
-#   when 5
-#     app.add_rental
-#   when 6
-#     print 'ID of person: '
-#     id = gets.chomp.to_i
-#     app.rentals_of_person(id)
-#   when 7
-#     puts 'Thank you for using the School Library App!'
-#   else
-#     puts 'Try again, please'
-#   end
+# def rentals
+#   print 'ID of person: '
+#   id = gets.chomp.to_i
+#   app.rentals_of_person(id)
 # end
-
-# # Create a new instance of the App class
 
 # def main
 #   app = App.new
@@ -78,7 +64,21 @@ main
 #   while number != 7
 #     show_menu
 #     number = gets.chomp.to_i
-#     choices(number, app)
+#     choices = {
+#       1 => app.books,
+#       2 => app.people,
+#       3 => app.add_person,
+#       4 => app.add_book,
+#       5 => app.add_rental,
+#       6 => rentals,
+#       7 => puts('Thank you for using the School Library App!')
+#     }
+#     if choices[number].nil?
+#       puts 'Try again, please'
+#       next
+#     else
+#       choices[number]
+#     end
 #   end
 # end
 
