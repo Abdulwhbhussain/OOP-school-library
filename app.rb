@@ -113,21 +113,11 @@ class App
   end
 
   def rentals_of_person(id)
-    @people.find do |person|
-      if person.id == id
-        rentals = person_rentals(person)
-        puts 'Rentals: '
-        rentals.each do |rental|
-          puts "Date:  #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
-        end
-        puts ' '
-      else
-        puts 'Person not found'
-      end
+    person_rentals = @rentals.select { |rental| rental.person.id == id }
+    puts 'Rentals: '
+    person_rentals.each do |rental|
+      puts "Date:  #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
-  end
-
-  def person_rentals(person)
-    person.rentals
+    puts ' '
   end
 end
