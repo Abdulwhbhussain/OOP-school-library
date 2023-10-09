@@ -74,6 +74,11 @@ In order to run this project you need:
 > - LinkedIn: [Abdulwhbhussain](https://www.linkedin.com/in/abdulwhbhussain)
 > - Twitter: [Abdulwhbhussain](https://twitter.com/AbdulWhbHussain)
 
+👤 **Tanmayi Manku**
+
+> - GitHub: [@githubhandle](https://github.com/tan12082001)
+> - LinkedIn: [LinkedIn](https://www.linkedin.com/in/tanmayi-manku-99195720a/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -96,7 +101,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project follow me on github for more amazing projects
+If you like this project follow me on GitHub for more amazing projects
 and ideas
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
