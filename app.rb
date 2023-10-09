@@ -16,7 +16,6 @@ class App
 
   def books_list()
     puts 'Listing all books:'
-    puts ' '
     @books.each do |book|
       puts "Title: \"#{book.title}\", Author: #{book.author}"
     end
@@ -25,7 +24,6 @@ class App
 
   def people_list()
     puts 'Listing all people:'
-    puts ' '
     @people.each do |person|
       puts "[#{person.class}] - Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
@@ -34,7 +32,6 @@ class App
 
   def add_book()
     puts 'Creating a book:'
-    puts ' '
     title = get_user_input('Title: ')
     author = get_user_input('Author: ')
     book = Book.new(title, author)
