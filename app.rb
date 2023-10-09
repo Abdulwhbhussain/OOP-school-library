@@ -112,10 +112,4 @@ class App
     print prompt
     gets.chomp
   end
-
-  def print_each(array)
-    array.each do |element|
-      puts element
-    end
-  end
 end
