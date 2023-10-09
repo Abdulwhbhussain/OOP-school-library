@@ -11,24 +11,30 @@ def show_menu
   puts '7 - Exit'
 end
 
-def choices(number, app)
-  case number
-  when 1
-    app.books_list
-  when 2
-    app.people_list
-  when 3
-    app.add_person
-  when 4
-    app.add_book
-  when 5
-    app.add_rental
-  when 6
-    print 'ID of person: '
-    id = gets.chomp.to_i
-    app.rentals_of_person(id)
-  else
-    puts 'Thank you for using the School Library App!'
+class Choices
+  def initialize(number, app)
+    @number = number
+    @app = app
+  end
+  def user_choices(number, app)
+    case number
+    when 1
+      app.books_list
+    when 2
+      app.people_list
+    when 3
+      app.add_person
+    when 4
+      app.add_book
+    when 5
+      app.add_rental
+    when 6
+      print 'ID of person: '
+      id = gets.chomp.to_i
+      app.rentals_of_person(id)
+    else
+      puts 'Thank you for using the School Library App!'
+    end
   end
 end
 
