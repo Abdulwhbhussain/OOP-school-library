@@ -12,10 +12,6 @@ def show_menu
 end
 
 class Choices
-  def initialize(number, app)
-    @number = number
-    @app = app
-  end
   def user_choices(number, app)
     case number
     when 1
@@ -53,7 +49,7 @@ def main
       puts ' '
       next
     else
-      choices(number, app)
+      Choices.new.user_choices(number, app)
     end
   end
 end
