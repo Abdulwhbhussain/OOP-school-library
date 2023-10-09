@@ -42,7 +42,6 @@ class App
 
   def add_student()
     puts 'Creating a student:'
-    puts ' '
     age = get_user_input('Age: ').to_i
     name = get_user_input('Name: ')
     permission = get_user_input('Has parent permission? [Y/N]: ').upcase
@@ -56,7 +55,6 @@ class App
 
   def add_teacher()
     puts 'Creating a Teacher:'
-    puts ' '
     age = get_user_input('Age: ').to_i
     name = get_user_input('Name: ')
     specialization = get_user_input('Specialization: ')
@@ -113,5 +111,11 @@ class App
   def get_user_input(prompt)
     print prompt
     gets.chomp
+  end
+
+  def print_each(array)
+    array.each do |element|
+      puts element
+    end
   end
 end
