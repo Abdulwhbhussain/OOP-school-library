@@ -1,4 +1,5 @@
 # App Console Entry Point
+require 'json'
 require_relative 'classes/book'
 require_relative 'classes/person'
 require_relative 'classes/teacher'
@@ -9,9 +10,9 @@ class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = load_data('books.json')
+    @people = load_data('people.json')
+    @rentals = load_data('rentals.json')
   end
 
   def books_list()
@@ -86,6 +87,12 @@ class App
     end
   end
 
+  def save_data()
+    File.write('books.json', JSON.dump(@books))
+    File.write('people.json', JSON.dump(@people))
+    File.write('rentals.json', JSON.dump(@rentals))
+  end
+
   private
 
   def get_user_input(prompt)
@@ -117,6 +124,14 @@ class App
         puts "#{index}) #{yield(item)}"
       end
       puts ' '
+    end
+  end
+
+  def load_data(file)
+    if File.exist?(file)
+      JSON.parse(File.read(file))
+    else
+      []
     end
   end
 end
