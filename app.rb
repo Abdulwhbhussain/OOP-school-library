@@ -88,12 +88,12 @@ class App
   end
 
   def save_data()
-    File.open("books.json", "w") { |f| f.puts @books.to_json }
-    File.open("people.json", "w") { |f| f.puts @people.to_json }
-    File.open("rentals.json", "w") { |f| f.puts @rentals.to_json }
-    # File.write('books.json', JSON.generate(@books))
-    # File.write('people.json', JSON.generate(@people))
-    # File.write('rentals.json', JSON.generate(@rentals))
+    # File.open("books.json", "w") { |f| f.puts @books.to_json }
+    # File.open("people.json", "w") { |f| f.puts @people.to_json }
+    # File.open("rentals.json", "w") { |f| f.puts @rentals.to_json }
+    File.write('books.json', JSON.pretty_generate(@books))
+    File.write('people.json', JSON.pretty_generate(@people))
+    File.write('rentals.json', JSON.pretty_generate(@rentals))
   end
 
   private
