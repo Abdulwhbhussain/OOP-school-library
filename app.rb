@@ -35,10 +35,12 @@ class App
   def add_book()
     puts 'Creating a book:'
     puts ' '
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
+    title = get_user_input('Title: ')
+    # print 'Title: '
+    # title = gets.chomp
+    author = get_user_input('Author: ')
+    # print 'Author: '
+    # author = gets.chomp
     book = Book.new(title, author)
     @books.push(book)
     puts 'Book created successfully'
@@ -48,12 +50,15 @@ class App
   def add_student()
     puts 'Creating a student:'
     puts ' '
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp
-    print 'Has parent permission? [Y/N]: '
-    permission = gets.chomp.upcase
+    age = get_user_input('Age: ').to_i
+    # print 'Age: '
+    # age = gets.chomp.to_i
+    name = get_user_input('Name: ')
+    # print 'Name: '
+    # name = gets.chomp
+    permission = get_user_input('Has parent permission? [Y/N]: ').upcase
+    # print 'Has parent permission? [Y/N]: '
+    # permission = gets.chomp.upcase
     permission = (permission == 'Y')
     student = Student.new(name, age)
     student.parent_permission = permission
@@ -65,12 +70,15 @@ class App
   def add_teacher()
     puts 'Creating a Teacher:'
     puts ' '
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp
-    print 'Specialization: '
-    specialization = gets.chomp
+    age = get_user_input('Age: ').to_i
+    # print 'Age: '
+    # age = gets.chomp.to_i
+    name = get_user_input('Name: ')
+    # print 'Name: '
+    # name = gets.chomp
+    specialization = get_user_input('Specialization: ')
+    # print 'Specialization: '
+    # specialization = gets.chomp
     teacher = Teacher.new(name, age, specialization)
     @people.push(teacher)
     puts 'Teacher created successfully'
@@ -78,8 +86,9 @@ class App
   end
 
   def add_person()
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    person_type = gets.chomp.to_i
+    person_type = get_user_input('Do you want to create a student (1) or a teacher (2)? [Input the number]: ').to_i
+    # print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    # person_type = gets.chomp.to_i
     case person_type
     when 1
       add_student
@@ -104,8 +113,9 @@ class App
     end
     person_index = gets.chomp.to_i
     person = @people[person_index]
-    print 'Date: '
-    date = gets.chomp
+    date = get_user_input('Date: ')
+    # print 'Date: '
+    # date = gets.chomp
     rental = Rental.new(date, book, person)
     @rentals.push(rental)
     puts 'Rental created successfully'
@@ -119,5 +129,12 @@ class App
       puts "Date:  #{rental.date}, Book #{rental.book.title} by #{rental.book.author}"
     end
     puts ' '
+  end
+
+  private
+
+  def get_user_input(prompt)
+    print prompt
+    gets.chomp
   end
 end
