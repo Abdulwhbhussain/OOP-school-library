@@ -88,9 +88,12 @@ class App
   end
 
   def save_data()
-    File.write('books.json', JSON.dump(@books))
-    File.write('people.json', JSON.dump(@people))
-    File.write('rentals.json', JSON.dump(@rentals))
+    File.open("books.json", "w") { |f| f.puts @books.to_json }
+    File.open("people.json", "w") { |f| f.puts @people.to_json }
+    File.open("rentals.json", "w") { |f| f.puts @rentals.to_json }
+    # File.write('books.json', JSON.generate(@books))
+    # File.write('people.json', JSON.generate(@people))
+    # File.write('rentals.json', JSON.generate(@rentals))
   end
 
   private
