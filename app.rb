@@ -87,6 +87,10 @@ class App
     end
   end
 
+  def save(filename, data)
+    File.write(filename, JSON.pretty_generate(data))
+  end
+
   def save_data()
     # File.open("books.json", "w") { |f| f.puts @books.to_json }
     # File.open("people.json", "w") { |f| f.puts @people.to_json }
