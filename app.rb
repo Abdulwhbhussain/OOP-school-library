@@ -97,37 +97,16 @@ class App
   def load_data(file)
     if File.exist?(file)
       file_data = JSON.parse(File.read(file))
-      if file == 'books.json'
+      case file
+      when 'books.json'
         file_data.map { |book| Book.new(book['title'], book['author']) }
-      elsif file == 'people.json'
-        persons = []
-        file_data.map do |person|
-          if person.key?('specialization')
-            teacher = Teacher.new(person['age'], person['name'], person['specialization'])
-            teacher.id = person['id']
-            persons.push(teacher)
-          else
-            student = Student.new(person['age'], person['name'])
-            student.parent_permission = person['parent_permission']
-            student.id = person['id']
-            persons.push(student)
-          end
-        end
-        persons
-      elsif file == 'rentals.json'
-        rentals = []
-        file_data.map do |data|
-          book = @books.find {|book| book.title == data['title'] && book.author == data['author']}
-          person = @people.find {|person| person.id == data['id']}
-          rental = Rental.new(data['date'], book, person) if book && person
-          rentals.push(rental)
-        end
-        rentals
-      else
-        puts "#{file} not found!"
+      when 'people.json'
+        parse_people_data(file_data)
+      when 'rentals.json'
+        parse_rentals_data(file_data)
       end
     else
-      puts "#{file} doesn't exist"
+      puts "#{file} does not exist!"
     end
   end
 
@@ -138,15 +117,43 @@ class App
     gets.chomp
   end
 
+  def parse_people_data(file_data)
+    persons = []
+    file_data.map do |person|
+      if person.key?('specialization')
+        teacher = Teacher.new(person['age'], person['name'], person['specialization'])
+        teacher.id = person['id']
+        persons.push(teacher)
+      else
+        student = Student.new(person['age'], person['name'])
+        student.parent_permission = person['parent_permission']
+        student.id = person['id']
+        persons.push(student)
+      end
+    end
+    persons
+  end
+
+  def parse_rentals_data(file_data)
+    rentals = []
+    file_data.map do |data|
+      book = @books.find { |b| b.title == data['book']['title'] && b.author == data['book']['author'] }
+      person = @people.find { |p| p.id == data['person']['id'] }
+      rental = Rental.new(data['date'], book, person) if book && person
+      rentals.push(rental)
+    end
+    rentals
+  end
+
   def create_a_person(person_class)
     age = get_user_input('Age: ').to_i
     name = get_user_input('Name: ')
     if person_class == Student
-      person = person_class.new(name, age)
+      person = person_class.new(age, name)
       person.parent_permission = get_user_input('Has parent permission? [Y/N]: ').casecmp('Y').zero?
     elsif person_class == Teacher
       specialization = get_user_input('Specialization: ')
-      person = person_class.new(name, age, specialization)
+      person = person_class.new(age, name, specialization)
     else
       puts "Invalid person choice: #{person_class}"
     end
