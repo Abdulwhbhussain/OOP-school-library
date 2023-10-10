@@ -1,4 +1,5 @@
 # App Console Entry Point
+require 'json'
 require_relative 'classes/book'
 require_relative 'classes/person'
 require_relative 'classes/teacher'
@@ -9,9 +10,9 @@ class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = load_data('books.json')
+    @people = load_data('people.json')
+    @rentals = load_data('rentals.json')
   end
 
   def books_list()
@@ -75,6 +76,7 @@ class App
     date = get_user_input('Date: ')
     rental = Rental.new(date, book, person)
     @rentals.push(rental)
+    save_data
     puts 'Rental created successfully'
     puts ' '
   end
@@ -86,6 +88,28 @@ class App
     end
   end
 
+  def save_data()
+    File.write('books.json', JSON.pretty_generate(@books))
+    File.write('people.json', JSON.pretty_generate(@people))
+    File.write('rentals.json', JSON.pretty_generate(@rentals))
+  end
+
+  def load_data(file)
+    if File.exist?(file)
+      file_data = JSON.parse(File.read(file))
+      case file
+      when 'books.json'
+        file_data.map { |book| Book.new(book['title'], book['author']) }
+      when 'people.json'
+        parse_people_data(file_data)
+      when 'rentals.json'
+        parse_rentals_data(file_data)
+      end
+    else
+      puts "#{file} does not exist!"
+    end
+  end
+
   private
 
   def get_user_input(prompt)
@@ -93,15 +117,43 @@ class App
     gets.chomp
   end
 
+  def parse_people_data(file_data)
+    persons = []
+    file_data.map do |person|
+      if person.key?('specialization')
+        teacher = Teacher.new(person['name'], person['age'], person['specialization'])
+        teacher.id = person['id']
+        persons.push(teacher)
+      else
+        student = Student.new(person['name'], person['age'])
+        student.parent_permission = person['parent_permission']
+        student.id = person['id']
+        persons.push(student)
+      end
+    end
+    persons
+  end
+
+  def parse_rentals_data(file_data)
+    rentals = []
+    file_data.map do |data|
+      book = @books.find { |b| b.title == data['book']['title'] && b.author == data['book']['author'] }
+      person = @people.find { |p| p.id == data['person']['id'] }
+      rental = Rental.new(data['date'], book, person) if book && person
+      rentals.push(rental)
+    end
+    rentals
+  end
+
   def create_a_person(person_class)
     age = get_user_input('Age: ').to_i
     name = get_user_input('Name: ')
     if person_class == Student
-      person = person_class.new(age, name)
+      person = person_class.new(name, age)
       person.parent_permission = get_user_input('Has parent permission? [Y/N]: ').casecmp('Y').zero?
     elsif person_class == Teacher
       specialization = get_user_input('Specialization: ')
-      person = person_class.new(age, name, specialization)
+      person = person_class.new(name, age, specialization)
     else
       puts "Invalid person choice: #{person_class}"
     end

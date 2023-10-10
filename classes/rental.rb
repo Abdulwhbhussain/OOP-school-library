@@ -1,3 +1,5 @@
+require 'json'
+
 class Rental
   attr_accessor :date, :book, :person
 
@@ -7,5 +9,13 @@ class Rental
     @book = book
     book.rentals << self
     @date = date
+  end
+
+  def to_json(option = {})
+    {
+      date: @date,
+      book: @book,
+      person: @person
+    }.to_json(option)
   end
 end

@@ -50,6 +50,7 @@ def main
       Choices.new.user_choices(number, app)
     end
   end
+  app.save_data
 end
 
 main
