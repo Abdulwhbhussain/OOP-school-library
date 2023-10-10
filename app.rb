@@ -100,6 +100,14 @@ class App
     File.write('rentals.json', JSON.pretty_generate(@rentals))
   end
 
+  def load_data(file)
+    if File.exist?(file)
+      test = JSON.parse(File.read(file))
+    else
+      []
+    end
+    test
+  end
   private
 
   def get_user_input(prompt)
@@ -134,11 +142,10 @@ class App
     end
   end
 
-  def load_data(file)
-    if File.exist?(file)
-      JSON.parse(File.read(file))
-    else
-      []
-    end
-  end
+  
 end
+
+t = App.new
+d = t.load_data('books.json')
+puts d
+puts d[0]['title']
