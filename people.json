@@ -34,8 +34,8 @@
   },
   {
     "id": 459,
-    "name": 12,
-    "age": "nina",
+    "name": "nina",
+    "age": 12,
     "parent_permission": true,
     "classroom": null
   }
