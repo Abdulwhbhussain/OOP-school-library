@@ -5,5 +5,18 @@
     "age": 23,
     "parent_permission": false,
     "classroom": null
+  },
+  {
+    "id": 928,
+    "name": "naomi",
+    "age": 43,
+    "specialization": "course"
+  },
+  {
+    "id": 459,
+    "name": 12,
+    "age": "nina",
+    "parent_permission": true,
+    "classroom": null
   }
 ]
