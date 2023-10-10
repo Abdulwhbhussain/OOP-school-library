@@ -26,5 +26,19 @@
       "parent_permission": true,
       "classroom": null
     }
+  },
+  {
+    "date": "2023-12-14",
+    "book": {
+      "title": "eel",
+      "author": "Water"
+    },
+    "person": {
+      "id": 517,
+      "name": "Tanmayi",
+      "age": 24,
+      "parent_permission": false,
+      "classroom": null
+    }
   }
 ]
