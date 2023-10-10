@@ -121,11 +121,11 @@ class App
     persons = []
     file_data.map do |person|
       if person.key?('specialization')
-        teacher = Teacher.new(person['age'], person['name'], person['specialization'])
+        teacher = Teacher.new(person['name'], person['age'], person['specialization'])
         teacher.id = person['id']
         persons.push(teacher)
       else
-        student = Student.new(person['age'], person['name'])
+        student = Student.new(person['name'], person['age'])
         student.parent_permission = person['parent_permission']
         student.id = person['id']
         persons.push(student)
@@ -149,11 +149,11 @@ class App
     age = get_user_input('Age: ').to_i
     name = get_user_input('Name: ')
     if person_class == Student
-      person = person_class.new(age, name)
+      person = person_class.new(name, age)
       person.parent_permission = get_user_input('Has parent permission? [Y/N]: ').casecmp('Y').zero?
     elsif person_class == Teacher
       specialization = get_user_input('Specialization: ')
-      person = person_class.new(age, name, specialization)
+      person = person_class.new(name, age, specialization)
     else
       puts "Invalid person choice: #{person_class}"
     end
