@@ -1,3 +1,5 @@
+require 'json'
+
 class Book
   attr_reader :rentals
   attr_accessor :title, :author
@@ -8,8 +10,10 @@ class Book
     @rentals = []
   end
 
-  # def add_rental(rental)
-  #   @rentals << rental
-  #   rental.book = self
-  # end
+  def to_json(option = {})
+    {
+      title: @title,
+      author: @author
+    }.to_json(option)
+  end
 end

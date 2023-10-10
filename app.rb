@@ -87,14 +87,7 @@ class App
     end
   end
 
-  def save(filename, data)
-    File.write(filename, JSON.pretty_generate(data))
-  end
-
   def save_data()
-    # File.open("books.json", "w") { |f| f.puts @books.to_json }
-    # File.open("people.json", "w") { |f| f.puts @people.to_json }
-    # File.open("rentals.json", "w") { |f| f.puts @rentals.to_json }
     File.write('books.json', JSON.pretty_generate(@books))
     File.write('people.json', JSON.pretty_generate(@people))
     File.write('rentals.json', JSON.pretty_generate(@rentals))
@@ -102,12 +95,37 @@ class App
 
   def load_data(file)
     if File.exist?(file)
-      test = JSON.parse(File.read(file))
+      file_data = JSON.parse(File.read(file))
+      if file == 'books.json'
+        file_data.map { |book| Book.new(book['title'], book['author']) }
+      elsif file == 'people.json'
+        persons = []
+        file_data.map do |person|
+          if person.key?('specialization')
+            teacher = Teacher.new(person['name'], person['age'], person['specialization'])
+            teacher.id = person['id']
+            persons.push(teacher)
+          else
+            student = Student.new(person['name'], person['age'])
+            student.parent_permission = person['parent_permission']
+            student.id = person['id']
+            persons.push(student)
+          end
+        end
+        persons
+      else
+        []
+        # file_data.map do |rental|
+        #   book = @books.find { |book| book.title == rental['book']['title'] && book.author == rental['book']['author'] }
+        #   person = @people.find { |person| person.id == rental['person']['id'] && person.name == rental['person']['name']}
+        #   Rental.new(rental['date'], book, person)
+        # end
+      end
     else
       []
     end
-    test
   end
+
   private
 
   def get_user_input(prompt)
@@ -141,11 +159,4 @@ class App
       puts ' '
     end
   end
-
-  
 end
-
-t = App.new
-d = t.load_data('books.json')
-puts d
-puts d[0]['title']

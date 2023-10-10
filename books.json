@@ -1,3 +1,14 @@
 [
-  "#<Book:0x000001cf89b11278>"
+  {
+    "title": "Water",
+    "author": "Fire"
+  },
+  {
+    "title": "Book",
+    "author": "Author"
+  },
+  {
+    "title": "eel",
+    "author": "Water"
+  }
 ]

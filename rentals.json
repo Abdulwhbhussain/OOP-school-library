@@ -1,3 +1,16 @@
 [
-
+  {
+    "date": "2023/3/3",
+    "book": {
+      "title": "Water",
+      "author": "Fire"
+    },
+    "person": {
+      "id": 335,
+      "name": "Wahab",
+      "age": 23,
+      "parent_permission": false,
+      "classroom": null
+    }
+  }
 ]

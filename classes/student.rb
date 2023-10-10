@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'person'
 
 class Student < Person
@@ -16,5 +17,15 @@ class Student < Person
 
   def play_hooky
     '¯\(ツ)/¯'
+  end
+
+  def to_json(option = {})
+    {
+      id: @id,
+      name: @name,
+      age: @age,
+      parent_permission: @parent_permission,
+      classroom: @classroom
+    }.to_json(option)
   end
 end
