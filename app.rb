@@ -142,11 +142,11 @@ class App
     age = get_user_input('Age: ').to_i
     name = get_user_input('Name: ')
     if person_class == Student
-      person = person_class.new(age, name)
+      person = person_class.new(name, age)
       person.parent_permission = get_user_input('Has parent permission? [Y/N]: ').casecmp('Y').zero?
     elsif person_class == Teacher
       specialization = get_user_input('Specialization: ')
-      person = person_class.new(age, name, specialization)
+      person = person_class.new(name, age, specialization)
     else
       puts "Invalid person choice: #{person_class}"
     end

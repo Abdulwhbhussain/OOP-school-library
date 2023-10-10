@@ -6,7 +6,7 @@ class Student < Person
   attr_writer :parent_permission
 
   def initialize(name, age, classroom = nil)
-    super(name, age)
+    super(age, name)
     @classroom = classroom
   end
 
