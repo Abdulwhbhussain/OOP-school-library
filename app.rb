@@ -76,6 +76,7 @@ class App
     date = get_user_input('Date: ')
     rental = Rental.new(date, book, person)
     @rentals.push(rental)
+    save_data
     puts 'Rental created successfully'
     puts ' '
   end
@@ -102,27 +103,31 @@ class App
         persons = []
         file_data.map do |person|
           if person.key?('specialization')
-            teacher = Teacher.new(person['name'], person['age'], person['specialization'])
+            teacher = Teacher.new(person['age'], person['name'], person['specialization'])
             teacher.id = person['id']
             persons.push(teacher)
           else
-            student = Student.new(person['name'], person['age'])
+            student = Student.new(person['age'], person['name'])
             student.parent_permission = person['parent_permission']
             student.id = person['id']
             persons.push(student)
           end
         end
         persons
+      elsif file == 'rentals.json'
+        rentals = []
+        file_data.map do |data|
+          book = @books.find {|book| book.title == data['title'] && book.author == data['author']}
+          person = @people.find {|person| person.id == data['id']}
+          rental = Rental.new(data['date'], book, person) if book && person
+          rentals.push(rental)
+        end
+        rentals
       else
-        []
-        # file_data.map do |rental|
-        #   book = @books.find { |book| book.title == rental['book']['title'] && book.author == rental['book']['author'] }
-        #   person = @people.find { |person| person.id == rental['person']['id'] && person.name == rental['person']['name']}
-        #   Rental.new(rental['date'], book, person)
-        # end
+        puts "#{file} not found!"
       end
     else
-      []
+      puts "#{file} doesn't exist"
     end
   end
 
