@@ -3,6 +3,8 @@ require_relative 'nameable'
 # Base Decorator Class
 
 class BaseDecorator < Nameable
+  attr_reader :nameable
+
   def initialize(nameable)
     super()
     @nameable = nameable
