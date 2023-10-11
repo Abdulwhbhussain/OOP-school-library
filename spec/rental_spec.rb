@@ -16,6 +16,14 @@ describe Rental do
       expect(@rental.date).to eq('2023-10-11')
     end
 
+    it 'should check for the book instance' do
+        expect(@rental.book).to eq(@book)
+    end
+
+    it 'should check for the person instance' do
+        expect(@rental.person).to eq(@person)
+    end
+
     it 'should check for the book title' do
       expect(@rental.book.title).to eq('The Great Gatsby')
     end
