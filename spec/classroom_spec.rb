@@ -1,4 +1,4 @@
-require_relative '../classes/classroom.rb'
+require_relative '../classes/classroom'
 require 'rspec'
 
 describe Classroom do
@@ -17,14 +17,13 @@ describe Classroom do
   end
 
   describe '#add_student' do
-  before(:each) do
-    @student = double('student')
-    allow(@student).to receive(:classroom=)
-  end
+    before(:each) do
+      @student = double('student')
+      allow(@student).to receive(:classroom=)
+    end
     it 'should add a student to the students array' do
       @classroom.add_student(@student)
       expect(@classroom.students).to eq([@student])
     end
   end
-  
 end
