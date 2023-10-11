@@ -17,11 +17,11 @@ describe Rental do
     end
 
     it 'should check for the book instance' do
-        expect(@rental.book).to eq(@book)
+      expect(@rental.book).to eq(@book)
     end
 
     it 'should check for the person instance' do
-        expect(@rental.person).to eq(@person)
+      expect(@rental.person).to eq(@person)
     end
 
     it 'should check for the book title' do
